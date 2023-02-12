@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VSix Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"  />
+  </head>
+
+  <body>
+      <header>
+        <h1>Dobro došli!</h1>
+    </header>
+    <form action="/login" method="post">
+      <input type="email" placeholder="Email address" name="email"/>
+      <input type="password" placeholder="Password" name="password"/>
+      <button>Log in</button>
+      {% if error %}
+        <p class="error-message">{{error}}</p>
+      {% endif %}
+    </form>
+      <footer>Sigurnosna automatizacija vrata VSix</footer>
+  </body>
+</html>

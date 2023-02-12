@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Upravljanje Vratima</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"  />
+</head>
+
+<body>
+      <header>
+        <h1> Upravljački gumbi za vrata </h1>
+    </header>
+<p id="status">
+
+</p>
+<main class="gumb">
+    <button id="otvori_vrata">Otvori</button>
+    <button id="zatvori_vrata">Zatvori</button>
+</main>
+
+<script>
+    $("#otvori_vrata").click(() => {
+        $.ajax({
+            url: "/otvaraj",
+            method: "GET",
+        }).done(podatci => {
+            $("#status").text(podatci["status"]);
+        });
+    });
+
+    $("#zatvori_vrata").click(() => {
+        $.ajax({
+            url: "/zatvaraj",
+            method: "GET",
+        }).done(podatci => {
+            $("#status").text(podatci["status"]);
+        });
+    });
+</script>
+
+</body>
+
+</html>
